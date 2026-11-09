@@ -16,4 +16,76 @@ function tick(){const start=new Date('2025-12-24T00:00:00-05:00');let delta=Math
 document.getElementById('openLetter').addEventListener('click',function(){const letter=document.getElementById('letter');letter.classList.toggle('open');this.setAttribute('aria-expanded',letter.classList.contains('open'));this.textContent=letter.classList.contains('open')?'Cerrar mi carta 💌':'Abrir mi carta 💗'});
 function openLightbox(src){document.getElementById('bigPhoto').src=src;document.getElementById('lightbox').classList.add('show')}function closeLightbox(){document.getElementById('lightbox').classList.remove('show')}document.getElementById('lightbox').addEventListener('click',e=>{if(e.target.id==='lightbox')closeLightbox()});document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLightbox()});
 function sayYes(){document.getElementById('answer').classList.add('show');const secret=document.getElementById('secretLetter');secret.classList.add('show');setTimeout(()=>secret.scrollIntoView({behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'center'}),350);for(let i=0;i<65;i++){setTimeout(()=>{const el=document.createElement('span');el.className='float';el.textContent=['💗','💜','🌸','💕','✨'][Math.floor(Math.random()*5)];el.style.left=Math.random()*100+'vw';el.style.top='100vh';el.style.fontSize=(18+Math.random()*25)+'px';el.style.animationDuration=(3+Math.random()*3)+'s';document.body.append(el);setTimeout(()=>el.remove(),6500)},i*45)}}
-</script><script>(function(){const button=document.getElementById('openSong'),panel=document.getElementById('songPlayer'),frame=document.getElementById('songFrame');if(!button||!panel||!frame)return;button.addEventListener('click',function(){const opening=panel.hidden;panel.hidden=!opening;button.setAttribute('aria-expanded',String(opening));button.textContent=opening?'⏸ Cerrar reproductor':'▶ Escuchar nuestra canción';frame.src=opening?'https://www.youtube-nocookie.com/embed/nZLfE30O8nk?autoplay=1&rel=0':'';});})();</script></body></html>
+</script><script>(function(){const button=document.getElementById('openSong'),panel=document.getElementById('songPlayer'),frame=document.getElementById('songFrame');if(!button||!panel||!frame)return;button.addEventListener('click',function(){const opening=panel.hidden;panel.hidden=!opening;button.setAttribute('aria-expanded',String(opening));button.textContent=opening?'⏸ Cerrar reproductor':'▶ Escuchar nuestra canción';frame.src=opening?'https://www.youtube-nocookie.com/embed/nZLfE30O8nk?autoplay=1&rel=0':'';});})();</script>
+<style>
+#cumple {text-align:center;padding:70px 20px;
+background:linear-gradient(135deg,#ffe3f0,#e6d6ff)}
+#cumple .regalo {max-width:700px;margin:auto;
+padding:35px 20px;background:#ffffffcc;
+border-radius:28px;box-shadow:0 12px 35px #9c78c733}
+#cumple h2 {color:#a44c91}
+#cumple button {border:0;border-radius:40px;
+padding:16px 25px;background:#b46ac2;
+color:white;font-size:18px;cursor:pointer}
+#mensajeCumple {display:none;line-height:1.9;
+font-size:18px;animation:appear .8s}
+#cumple .emoji {font-size:45px}
+</style>
+
+<section id="cumple">
+  <div class="regalo">
+    <div class="emoji">🎁💜🎈</div>
+    <h2>Una sorpresa más para ti, mi amor</h2>
+    <p id="esperaCumple">Hay un regalito esperando su momento especial...</p>
+    <button id="botonCumple" hidden onclick="abrirCumple()">
+      🎂 Abrir mi regalo de cumpleaños
+    </button>
+    <div id="mensajeCumple">
+      <div class="emoji">🎂🎉💖🎈</div>
+      <h2>¡Feliz cumpleaños, mi reina chillona!</h2>
+      <p>Mi amor, hoy celebro tu vida y la felicidad
+      de poder compartir la mía contigo.</p>
+      <p>Gracias por cada sonrisa, cada abrazo,
+      cada aventura y cada momento que hemos vivido.</p>
+      <p>Deseo que todos tus sueños se cumplan,
+      que nunca te falten motivos para sonreír
+      y que podamos celebrar muchísimos
+      cumpleaños más juntos.</p>
+      <p><strong>Te amo muchísimo,
+      mi reina chillona hermosa. ❤️</strong></p>
+      <p>Siempre tuyo, Andrés. 💜</p>
+    </div>
+  </div>
+</section>
+
+<script>
+const fechaCumple = Date.parse('2026-11-15T00:00:00-05:00');
+
+function revisarCumple() {
+  if (Date.now() >= fechaCumple) {
+    document.getElementById('esperaCumple').textContent =
+      '¡Llegó tu día especial, mi amor! 🎉';
+    document.getElementById('botonCumple').hidden = false;
+  }
+}
+
+function abrirCumple() {
+  document.getElementById('mensajeCumple').style.display = 'block';
+  document.getElementById('botonCumple').hidden = true;
+  for (let i = 0; i < 65; i++) {
+    setTimeout(() => {
+      const e = document.createElement('span');
+      e.className = 'float';
+      e.textContent = ['🎈','🎉','💜','❤️','🎂','✨'][Math.floor(Math.random()*6)];
+      e.style.left = Math.random()*100+'vw';
+      e.style.top = '100vh';
+      e.style.fontSize = '30px';
+      document.body.appendChild(e);
+      setTimeout(() => e.remove(), 6500);
+    }, i*60);
+  }
+}
+revisarCumple();
+setInterval(revisarCumple, 1000);
+</script>
+</body></html>
